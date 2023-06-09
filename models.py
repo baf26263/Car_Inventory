@@ -76,4 +76,4 @@ class CarSchema(ma.Schema):
         fields = ['id', 'make','model','year', 'color']
 
 car_schema = CarSchema()
-car_schema = CarSchema(many=True)
+cars_schema = CarSchema(many=True)

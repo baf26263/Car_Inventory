@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, render_template
 from helpers import token_required
-from models import db, User, Car, car_schema, car_schema
+from models import db, User, Car, car_schema, cars_schema
 
 api = Blueprint('api',__name__, url_prefix='/api')
 
@@ -32,7 +32,7 @@ def create_car(current_user_token):
 def get_car(current_user_token):
     a_user = current_user_token.token
     cars = Car.query.filter_by(user_token = a_user).all()
-    response = car_schema.dump(cars)
+    response = cars_schema.dump(cars)
     return jsonify(response)
 
 @api.route('/cars/<id>', methods = ['POST', 'PUT'])
